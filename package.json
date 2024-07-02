@@ -1,0 +1,15 @@
+{
+  "name": "flip-timer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cd ./src && lite-server",
+    "copy": "cp index.html ./build/index.html",
+    "build": "tsc && yarn run copy"
+  },
+  "packageManager": "yarn@4.3.1",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
