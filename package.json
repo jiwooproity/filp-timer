@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "cd ./src && lite-server",
-    "copy": "cp index.html ./build/index.html",
-    "build": "tsc && yarn run copy"
+    "dev": "lite-server",
+    "copy": "cp ./src/style.css ./build/style.css",
+    "build": "tsc && yarn run copy && node ./handler/build-html.js"
   },
   "packageManager": "yarn@4.3.1",
   "devDependencies": {
