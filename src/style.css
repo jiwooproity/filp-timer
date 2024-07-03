@@ -7,4 +7,108 @@
 .container {
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes time-animation {
+  0% {
+    -webkit-transform: rotateX(180deg) translateX(-50%);
+    -moz-transform: rotateX(180deg) translateX(-50%);
+    -ms-transform: rotateX(180deg) translateX(-50%);
+    transform: rotateX(180deg) translateX(-50%);
+  }
+
+  100% {
+    -webkit-transform: rotateX(0deg) translateX(-50%);
+    -moz-transform: rotateX(0deg) translateX(-50%);
+    -ms-transform: rotateX(0deg) translateX(-50%);
+    transform: rotateX(0deg) translateX(-50%);
+  }
+}
+
+.timer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-color: black;
+}
+
+.timer-box {
+  width: 100px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+}
+
+.timer-dummy {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+}
+
+.timer-dummy > .time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  line-height: 100px;
+  color: white;
+}
+
+.timer-top {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 0%;
+  transform: rotateX(0deg) translateX(-50%);
+  overflow: hidden;
+  animation: time-animation 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+  background-color: black;
+}
+
+.timer-bottom {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  background-color: black;
+}
+
+.timer-top > .time {
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 100px;
+  color: white;
+}
+
+.timer-bottom > .time {
+  position: absolute;
+  bottom: -65px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 100px;
+  color: white;
 }
