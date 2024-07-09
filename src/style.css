@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.container {
+.timer-container {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -12,103 +12,108 @@
   align-items: center;
 }
 
-@keyframes time-animation {
-  0% {
-    -webkit-transform: rotateX(180deg) translateX(-50%);
-    -moz-transform: rotateX(180deg) translateX(-50%);
-    -ms-transform: rotateX(180deg) translateX(-50%);
-    transform: rotateX(180deg) translateX(-50%);
-  }
-
-  100% {
-    -webkit-transform: rotateX(0deg) translateX(-50%);
-    -moz-transform: rotateX(0deg) translateX(-50%);
-    -ms-transform: rotateX(0deg) translateX(-50%);
-    transform: rotateX(0deg) translateX(-50%);
-  }
-}
-
-.timer-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+.timer-box {
+  width: 250px;
+  height: 300px;
+  position: relative;
   background-color: black;
 }
 
-.timer-box {
-  width: 100px;
-  height: 200px;
-  position: relative;
-  transform-style: preserve-3d;
-  transform-origin: 50% 50%;
-}
-
-.timer-dummy {
+.timer-top-area {
   width: 100%;
   height: 100%;
   position: absolute;
-}
-
-.line {
-  width: 100%;
-  height: 1px;
-  background-color: black;
-  position: absolute;
-  top: 50%;
+  top: 0px;
   left: 0px;
-  transform: translateY(-50%);
-}
-
-.timer-dummy > .time {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 100px;
-  line-height: 100px;
-  color: white;
-}
-
-.timer-top {
-  width: 100%;
-  height: 50%;
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
   transform-style: preserve-3d;
-  transform-origin: 50% 0%;
-  transform: rotateX(0deg) translateX(-50%);
-  overflow: hidden;
-  animation: time-animation 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
-  background-color: black;
 }
 
-.timer-bottom {
+.timer-top-rotate {
   width: 100%;
   height: 50%;
   position: absolute;
   top: 0px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0px;
   overflow: hidden;
   background-color: black;
+  border-top: 1px solid white;
 }
 
-.timer-top > .time {
+@keyframes topRotateAnimate {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  50% {
+    transform: rotateX(-90deg) translateY(0px);
+  }
+
+  100% {
+    transform: rotateX(-90deg) translateY(0px);
+  }
+}
+
+.timer-top-area:nth-child(2) {
+  transform-origin: 50% 50%;
+  animation: topRotateAnimate 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+
+.timer-bottom-area {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: -55px;
+  bottom: 0px;
+  left: 0px;
+}
+
+@keyframes bottomRotateAnimate {
+  0% {
+    transform: rotateX(-90deg);
+  }
+
+  50% {
+    transform: rotateX(-90deg);
+  }
+
+  100% {
+    transform: rotateX(0deg) translateY(0px);
+  }
+}
+
+.timer-bottom-area:nth-child(4) {
+  transform-origin: 50% 50%;
+  animation: bottomRotateAnimate 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+
+.timer-bottom-rotate {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
+  background-color: black;
+  border-bottom: 1px solid white;
+}
+
+.timer-top-rotate > .timer-number {
+  position: absolute;
+  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 100px;
+  line-height: 100px;
+  display: block;
   color: white;
 }
 
-.timer-bottom > .time {
+.timer-bottom-rotate > .timer-number {
   position: absolute;
-  bottom: -65px;
+  top: -50px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 100px;
+  line-height: 100px;
+  display: block;
   color: white;
 }
